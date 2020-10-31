@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <math.h>
+
+#define TRUE 1
+#define FALSE 0
+#define EPSILON 0.00001
+
+typedef struct s_tuple
+{
+    float x;
+    float y;
+    float z;
+    float w;
+} tuple;
+
+typedef struct s_projectile
+{
+    tuple position;
+    tuple velocity;
+
+} t_projectile;
+
+typedef struct s_envir
+{
+    tuple gravity;
+    tuple wind;
+
+} t_envir;
+
+int is_vec(tuple t);
+int is_point(tuple t);
+tuple vector(float x, float y, float z);
+tuple point(float x, float y, float z);
+int is_equal(float x, float y);
+float ft_abs(float x);
+tuple add_tuples(tuple t1, tuple t2);
+tuple substract_tuples(tuple t1, tuple t2);
+int tuples_are_equal(tuple t1, tuple t2);
+tuple opposite_tuple(tuple t);
+tuple scalar_multiply(float a, tuple t);
+tuple scalar_divide(float a, tuple t);
+float vec_magnitude(tuple t);
+tuple normalise_vec(tuple t);
+float scalar_product(tuple v1, tuple v2);
+tuple cross_product(tuple v1, tuple v2);
