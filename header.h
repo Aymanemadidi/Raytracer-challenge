@@ -13,7 +13,29 @@ typedef struct s_tuple
     float w;
 } tuple;
 
-typedef struct s_projectile
+typedef struct s_color
+{
+    float red;
+    float green;
+    float blue;
+} t_color;
+
+typedef struct s_canva
+{
+    float width;
+    float height;
+    t_color color;
+} t_canva;
+
+typedef struct s_pixel
+{
+    float x;
+    float y;
+    t_canva canva;
+    t_color color;
+} t_pixel;
+
+/*typedef struct s_projectile
 {
     tuple position;
     tuple velocity;
@@ -25,7 +47,7 @@ typedef struct s_envir
     tuple gravity;
     tuple wind;
 
-} t_envir;
+} t_envir;*/
 
 int is_vec(tuple t);
 int is_point(tuple t);
@@ -43,3 +65,29 @@ float vec_magnitude(tuple t);
 tuple normalise_vec(tuple t);
 float scalar_product(tuple v1, tuple v2);
 tuple cross_product(tuple v1, tuple v2);
+t_color color(float x, float y, float z);
+t_color add_colors(t_color c1, t_color c2);
+t_color sub_colors(t_color c1, t_color c2);
+t_color scalar_color(float a, t_color c);
+t_color mult_color(t_color c1, t_color c2);
+t_color pixel_at(t_canva c, float x, float y);
+t_pixel get_pixel(t_canva c, float x, float y);
+t_pixel write_pixel(t_canva canva, float x, float y, t_color color);
+t_canva canva(float width, float height);
+int colors_are_equal(t_color c1, t_color c2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
