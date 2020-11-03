@@ -1,9 +1,30 @@
 #include <stdio.h>
+#include <string.h>
 #include <math.h>
+#include <stdlib.h>
 
 #define TRUE 1
 #define FALSE 0
 #define EPSILON 0.00001
+
+typedef struct s_color
+{
+    float red;
+    float green;
+    float blue;
+} t_color;
+
+typedef struct s_pixel
+{
+    t_color color;
+} t_pixel;
+
+typedef struct s_canva
+{
+    float width;
+    float height;
+    t_pixel *img;
+} t_canva;
 
 typedef struct s_tuple
 {
@@ -13,27 +34,15 @@ typedef struct s_tuple
     float w;
 } tuple;
 
-typedef struct s_color
+/*t_canvass init_canvass(int width, int height)
 {
-    float red;
-    float green;
-    float blue;
-} t_color;
+    t_canvas result;
+    
+    result.width = width;
+    result.height = height;
+    result.img = (t_pixel *)malloc(sizeof(t_pixel) * width * height);
+}*/
 
-typedef struct s_canva
-{
-    float width;
-    float height;
-    t_color color;
-} t_canva;
-
-typedef struct s_pixel
-{
-    float x;
-    float y;
-    t_canva canva;
-    t_color color;
-} t_pixel;
 
 /*typedef struct s_projectile
 {
@@ -48,7 +57,6 @@ typedef struct s_envir
     tuple wind;
 
 } t_envir;*/
-
 int is_vec(tuple t);
 int is_point(tuple t);
 tuple vector(float x, float y, float z);
@@ -70,9 +78,10 @@ t_color add_colors(t_color c1, t_color c2);
 t_color sub_colors(t_color c1, t_color c2);
 t_color scalar_color(float a, t_color c);
 t_color mult_color(t_color c1, t_color c2);
-t_color pixel_at(t_canva c, float x, float y);
+t_color pixel_at(t_canva *c, float x, float y);
 t_pixel get_pixel(t_canva c, float x, float y);
-t_pixel write_pixel(t_canva canva, float x, float y, t_color color);
+t_pixel *init_canvas(int width, int height);
+void write_pixel(t_canva *canva, float x, float y, t_color color);
 t_canva canva(float width, float height);
 int colors_are_equal(t_color c1, t_color c2);
 

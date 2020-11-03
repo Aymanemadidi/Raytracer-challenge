@@ -6,33 +6,43 @@ t_canva canva(float width, float height)
 
     canva.width = width;
     canva.height = height;
-    canva.color = color(0, 0, 0);
 
     return (canva);
 }
 
-t_pixel write_pixel(t_canva canva, float x, float y, t_color color)
+t_pixel *init_canvas(int width, int height)
 {   
-    t_pixel pix;
+    t_canva canva;
+    t_pixel *result;
+    canva.img = NULL;
 
-    pix.x = x;
-    pix.y = y;
-    pix.color = color;
-    pix.canva = canva;
+    result = canva.img;
+    
+    canva.width = width;
+    canva.height = height;
+    result = (t_pixel*)malloc(sizeof(t_pixel) * width * height);
 
-    return (pix);
+    return (result);
 }
 
-t_pixel get_pixel(t_canva c, float x, float y)
+/*void fill_img(t_canva *canva)
+{
+    int i = 0;
+    while (canva->img[0] != '\0')
+    {
+        canva->img->color = color(0, 0, 0);
+        canva->img++; 
+    }
+}*/
+
+void write_pixel(t_canva *canva, float x, float y, t_color color)
 {   
-    t_pixel pix;
-    pix.x = x;
-    pix.y = y;
-    pix.canva = c;
-    return (pix);
+    canva->img[(int)((y * canva->width) + x)].color.red = color.red;
+    canva->img[(int)((y * canva->width) + x)].color.green = color.green;
+    canva->img[(int)((y * canva->width) + x)].color.blue = color.blue;
 }
 
-t_color pixel_at(t_canva c, float x, float y)
-{   
-    return (get_pixel(c, x, y).color);
+t_color pixel_at(t_canva *canva, float x, float y)
+{
+    return (canva->img[(int)((y * canva->width) + x)].color);
 }

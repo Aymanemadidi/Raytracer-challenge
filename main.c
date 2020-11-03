@@ -69,24 +69,26 @@ int main()
         printf("Scalar Product Test Passed\n");
 
     //----------Pixel_at Test-------------
+    
+    t_pixel *canva_ptr;
+    //t_pixel *ptr1;
+    //t_color red = color (1, 0, 0);
+    //t_color out_color;
+    //int i = 0;
 
-    t_canva canva1;
-    t_color red;
-    t_pixel output_pixel;
-    t_color output_color;
+    canva_ptr = init_canvas(10, 20);
+    canva_ptr += 3;
+    canva_ptr->color.red = 1;
+    canva_ptr->color.green = 0;
+    canva_ptr->color.blue = 0;
 
-    canva1 = canva(10, 20);
-    red = color(1, 0, 0);
+    //ptr1 = canva_ptr->img;
+    //write_pixel(canva_ptr, 2, 3, red);
+    //canva_ptr.color = red;
 
-    output_pixel = write_pixel(canva1, 2, 3, red);
-    output_color = pixel_at(canva1, 2, 3);
-    printf("out_pix color:\n red: %f\ngreen: %f\nblue: %f\n",
-     output_pixel.color.red, output_pixel.color.green, 
-     output_pixel.color.blue);
-    printf("out red: %f\n", output_color.red);
-    printf("red red: %f\n", red.red);
-    if (colors_are_equal(red, output_color))
-        printf("Pixel_at Test Passed");
-    else
-        printf("Pixel_at Test NOT Passed");    
+    //red = color(1, 0, 0);
+
+    /*printf("%f\n", canva_ptr->img[32].color.red);
+    printf("%f\n", canva_ptr->img[32].color.green);
+    printf("%f\n", canva_ptr->img[32].color.blue);*/
 }
