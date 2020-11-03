@@ -5,7 +5,7 @@ int is_point(tuple t);
 
 int main()
 {
-    tuple vec1;
+    /*tuple vec1;
     tuple point1;
 
     vec1.x = 5.0;
@@ -66,7 +66,7 @@ int main()
 
     float scalair_prod = 20.0;
     if (scalar_product(vec4, vec5) == scalair_prod)
-        printf("Scalar Product Test Passed\n");
+        printf("Scalar Product Test Passed\n");*/
 
     //----------Pixel_at Test-------------
     
