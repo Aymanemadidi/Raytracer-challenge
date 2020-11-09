@@ -70,7 +70,7 @@ int main()
 
     //----------Pixel_at Test-------------
     
-    t_canva	canvas;
+    t_canvas	canvas;
     t_color	red = color(1, 0, 0);
     //t_pixel *ptr1;
     //t_color red = color (1, 0, 0);
@@ -80,7 +80,7 @@ int main()
     canvas = init_canva(10, 20);
     write_pixel(&canvas, 2, 3, red);
     t_color result_color = pixel_at(canvas, 2, 3);
-    printf("red = %f\tgreen = %f\tblue = %f\n", result_color.red, result_color.green, result_color.blue);
+    printf("red = %f\ngreen = %f\nblue = %f\n", result_color.red, result_color.green, result_color.blue);
     //ptr1 = canva_ptr->img;
     //write_pixel(canva_ptr, 2, 3, red);
     //canva_ptr.color = red;
