@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+#define TRUE 1
+#define FALSE 0
+#define EPSILON 0.00001
+
+typedef struct s_color
+{
+    float red;
+    float green;
+    float blue;
+} t_color;
+
+typedef struct s_pixel
+{
+    t_color color;
+} t_pixel;
+
+typedef struct s_canva
+{
+    float width;
+    float height;
+    t_pixel *img;
+} t_canva;
+
+t_color color(float x, float y, float z)
+{
+    t_color c;
+
+    c.red = x;
+    c.green = y;
+    c.blue = z;
+
+    return (c);
+}
+
+t_pixel *init_canvas(int width, int height)
+{   
+    t_canva canva;
+    t_pixel *result;
+    canva.img = NULL;
+
+    result = canva.img;
+    
+    canva.width = width;
+    canva.height = height;
+    result = (t_pixel*)malloc(sizeof(t_pixel) * width * height);
+
+    return (result);
+}
+
+void write_pixel(t_canva *canva, float x, float y, t_color color)
+{   
+    canva->img[(int)((y * canva->width) + x)].color.red = color.red;
+    canva->img[(int)((y * canva->width) + x)].color.green = color.green;
+    canva->img[(int)((y * canva->width) + x)].color.blue = color.blue;
+}
+
+int main() {
+  
+    t_pixel *canva_ptr;
+    t_pixel *ptr1;
+    t_color red = color (1, 0, 0);
+    //t_color out_color;
+    //int i = 0;
+
+    canva_ptr = init_canvas(10, 20);
+    canva_ptr += 3;
+    canva_ptr->color.red = 1;
+    canva_ptr->color.green = 0;
+    canva_ptr->color.blue = 0;
+    //ptr1 = canva_ptr->img;
+    //write_pixel(canva_ptr, 2, 3, red);
+    //canva_ptr.color = red;
+
+    //red = color(1, 0, 0);
+
+    /*printf("%f\n", canva_ptr->img[32].color.red);
+    printf("%f\n", canva_ptr->img[32].color.green);
+    printf("%f\n", canva_ptr->img[32].color.blue);*/
+  return 0;
+}
