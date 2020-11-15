@@ -9,6 +9,13 @@
 #define FALSE 0
 #define EPSILON 0.00001
 
+typedef struct s_rgb_color
+{
+    int red;
+    int green;
+    int blue;
+} t_rgb_color;
+
 typedef struct s_color
 {
     float red;
@@ -62,6 +69,7 @@ typedef struct s_envir
 
 int is_vec(tuple t);
 int is_point(tuple t);
+int	ft_strlen(const char *str);
 tuple vector(float x, float y, float z);
 tuple point(float x, float y, float z);
 int is_equal(float x, float y);
