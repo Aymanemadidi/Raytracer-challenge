@@ -17,24 +17,52 @@ int		ft_strlen(const char *str)
 	return (i);
 }
 
-char * itoa(int num) {
-   int count = 1;
-   int n = num;
-   while(n > 10) { n = n/10; count++; }
+int		len(long nb)
+{
+	int		len;
 
-   char *str = malloc(count+1);
+	len = 0;
+	if (nb < 0)
+	{
+		nb = nb * -1;
+		len++;
+	}
+	while (nb > 0)
+	{
+		nb = nb / 10;
+		len++;
+	}
+	return (len);
+}
 
-   str[count] = '\0';
-   
-   n = num;
+char	*ft_itoa(int nb)
+{
+	char *str;
+	long	n;
+	int		i;
 
-   for(int i = count-1; i >= 0; i--) {
-      str[i] =  (n%10) + '0';
-      n = n /10;
-   }
-
-   return str;
-
+	n = nb;
+	i = len(n);
+	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	str[i--] = '\0';
+	if (n == 0)
+	{
+		str[0] = 48;
+		return (str);
+	}
+	if (n < 0)
+	{
+		str[0] = '-';
+		n = n * -1;
+	}
+	while (n > 0)
+	{
+		str[i] = 48 + (n % 10);
+		n = n / 10;
+		i--;
+	}
+	return (str);
 }
 
 int    *construct_ppm(t_canvas canva)
@@ -43,8 +71,9 @@ int    *construct_ppm(t_canvas canva)
     *fd1 = open("test.ppm", O_RDWR);
     int h = (int)canva.height;
     int w = (int)canva.width;
-    char *h1 = itoa(h);
-    char *w1 = itoa(w);
+    printf("width: %d\n",w);
+    char *h1 = ft_itoa(h);
+    char *w1 = ft_itoa(w);
     printf("w1: %c\n", w1[0]);
     write(*fd1, "P3\n", 3);
     write(*fd1, w1, ft_strlen((const char*)w1));
@@ -107,7 +136,7 @@ void ppm_second(int *fd, t_canvas canva)
 
 int     main()
 {   
-    t_canvas canva = init_canva(10, 3);
+    t_canvas canva = init_canva(20, 10);
     int *d ;
     d = NULL;
     d = construct_ppm(canva);
