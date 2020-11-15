@@ -71,10 +71,8 @@ int    *construct_ppm(t_canvas canva)
     *fd1 = open("test.ppm", O_RDWR);
     int h = (int)canva.height;
     int w = (int)canva.width;
-    printf("width: %d\n",w);
     char *h1 = ft_itoa(h);
     char *w1 = ft_itoa(w);
-    printf("w1: %c\n", w1[0]);
     write(*fd1, "P3\n", 3);
     write(*fd1, w1, ft_strlen((const char*)w1));
     write(*fd1, " ", 1);
@@ -101,7 +99,9 @@ void ppm_second(int *fd, t_canvas canva)
     int h = (int)canva.height;
     int w = (int)canva.width;
     char test[w][h];
-    while (i < h)
+    char *test_red = ft_itoa(pixel_at(canva, 0, 0).red * 255);
+    int z = 0;
+    /*while (i < h)
     {
         test[0][i] = '0';
         i++;
@@ -117,28 +117,41 @@ void ppm_second(int *fd, t_canvas canva)
         i++;     
     }
     i = 0;
-    j = 0;
+    j = 0;*/
     while (i < h)
     {   
-        printf("here\n");
         while (j < w)
         {   
-            write(*fd, "0", 1);
+
+            write(*fd, test_red, 3);//.red; 
             write(*fd, " ", 1);
+            write(*fd, "0", 1);//.green;
+            write(*fd, " ", 1);     
+            write(*fd, "0", 1);//.blue;
+            write(*fd, " ", 1);            
             j++;
         }
         j = 0;
         write(*fd, "\n", 1);
         i++;
     }
+    t_color result_color1 = pixel_at(canva, 0, 0);
+    printf("red = %d\ngreen = %d\nblue = %d\n\n", result_color1.red, result_color1.green, result_color1.blue);
+    t_color result_color2 = pixel_at(canva, 0, 1);
+    printf("red = %d\ngreen = %d\nblue = %d\n", result_color2.red, result_color2.green, result_color2.blue);
     //printf("%c\n", test[1][0]);
 }
 
 int     main()
 {   
-    t_canvas canva = init_canva(20, 10);
+    t_canvas canva = init_canva(5, 3);
     int *d ;
     d = NULL;
+    t_color red = color(1, 0, 0);
+    t_color red2 = color(1, 0, 1);
+    write_pixel(&canva, 0, 0, red);
+    write_pixel(&canva, 0, 1, red2);
+    write_pixel(&canva, 1, 0, red);
     d = construct_ppm(canva);
     ppm_second(d,canva);
     printf("fd: %d\n", *d);

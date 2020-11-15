@@ -18,9 +18,9 @@ typedef struct s_rgb_color
 
 typedef struct s_color
 {
-    float red;
-    float green;
-    float blue;
+    int red;
+    int green;
+    int blue;
 } t_color;
 
 typedef struct s_pixel
