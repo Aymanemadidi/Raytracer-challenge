@@ -4,9 +4,26 @@ t_color color(float x, float y, float z)
 {
     t_color c;
 
-    c.red = x;
-    c.green = y;
-    c.blue = z;
+    if (x > 1)
+        c.red = 1;
+    else if (x < 0)
+        c.red = 0;
+    else
+        c.red = x;
+
+    if (y > 1)
+        c.green = 1;
+    else if (y < 0)
+        c.green = 0;
+    else
+        c.green = y;
+
+    if (z > 1)
+        c.blue = 1;
+    else if (z < 0)
+        c.blue = 0;
+    else
+        c.blue = z;                
 
     return (c);
 }

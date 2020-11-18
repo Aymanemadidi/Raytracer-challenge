@@ -53,7 +53,7 @@ typedef struct s_tuple
 }*/
 
 
-/*typedef struct s_projectile
+typedef struct s_projectile
 {
     tuple position;
     tuple velocity;
@@ -65,7 +65,7 @@ typedef struct s_envir
     tuple gravity;
     tuple wind;
 
-} t_envir;*/
+} t_envir;
 
 int is_vec(tuple t);
 int is_point(tuple t);
