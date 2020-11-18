@@ -11,6 +11,26 @@ t_canvas init_canva(float width, float height)
     return (result);
 }
 
+void    same_color_canva(t_canvas *canva, t_color color)
+{   
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (i < canva->height)
+    {
+        while (j < canva->width)
+        {
+            write_pixel(canva, j, i, color);
+            //printf("color: %f\n", pixel_at(*canva, i, j).red);
+            j++;
+        }
+        j = 0;
+        i++;
+    }
+}
+
 /*void fill_img(t_canva *canva)
 {
     int i = 0;
@@ -21,9 +41,10 @@ t_canvas init_canva(float width, float height)
     }
 }*/
 
-void write_pixel(t_canvas *canva, float x, float y, t_color color)
+void write_pixel(t_canvas *canva, int x, int y, t_color color)
 {   
     canva->img[(int)((y * canva->width) + x)].color.red = color.red;
+    //printf("write red: %f\n", canva->img->color.red);
     canva->img[(int)((y * canva->width) + x)].color.green = color.green;
     canva->img[(int)((y * canva->width) + x)].color.blue = color.blue;
 }

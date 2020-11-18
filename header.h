@@ -18,9 +18,9 @@ typedef struct s_rgb_color
 
 typedef struct s_color
 {
-    int red;
-    int green;
-    int blue;
+    float red;
+    float green;
+    float blue;
 } t_color;
 
 typedef struct s_pixel
@@ -30,8 +30,8 @@ typedef struct s_pixel
 
 typedef struct s_canva
 {
-    float width;
-    float height;
+    int width;
+    int height;
     t_pixel *img;
 } t_canvas;
 
@@ -91,7 +91,8 @@ t_color scalar_color(float a, t_color c);
 t_color mult_color(t_color c1, t_color c2);
 t_color pixel_at(t_canvas c, float x, float y);
 t_pixel get_pixel(t_canvas c, float x, float y);
-void write_pixel(t_canvas *canva, float x, float y, t_color color);
+void write_pixel(t_canvas *canva, int x, int y, t_color color);
+void    same_color_canva(t_canvas *canva, t_color color);
 t_canvas init_canva(float width, float height);
 int colors_are_equal(t_color c1, t_color c2);
 
