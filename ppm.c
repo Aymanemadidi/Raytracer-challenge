@@ -124,17 +124,21 @@ void ppm_second(int *fd, t_canvas canva)
     }*/
     i = 0;
     j = 0;
-    while (i < h)
+    while (i < w)
     {   
-        while (j < w)
+        while (j < h)
         {   
+            len_red = strlen(ft_itoa(pixel_at(canva, i, j).red * 255));
+            len_green = strlen(ft_itoa(pixel_at(canva, i, j).green * 255));
+            len_blue = strlen(ft_itoa(pixel_at(canva, i, j).blue * 255));
             //printf("red before: %f\n", pixel_at(canva, i, j).red);
-            write(*fd, ft_itoa(pixel_at(canva, i, j).red * 255), 3);//.red; 
+            write(*fd, ft_itoa(pixel_at(canva, i, j).red * 255), len_red);//.red; 
             //printf("red after: %f\n", pixel_at(canva, i, j).red);
             write(*fd, " ", 1);
-            write(*fd, ft_itoa(pixel_at(canva, i, j).green * 255), 1);//.green;
+            write(*fd, ft_itoa(pixel_at(canva, i, j).green * 255), len_green);//.green;
             write(*fd, " ", 1);     
-            write(*fd, ft_itoa(pixel_at(canva, i, j).blue * 255), 3);//.blue;
+            write(*fd, ft_itoa(pixel_at(canva, i, j).blue * 255), len_blue);//.blue;
+            if (j + 1 != h)
             write(*fd, " ", 1);            
             j++;
         }
@@ -151,11 +155,11 @@ void ppm_second(int *fd, t_canvas canva)
 
 int     main()
 {   
-    t_canvas canva = init_canva(5, 4);
+    t_canvas canva = init_canva(10, 7);
     int *d ;
     d = NULL;
     t_color red = color(1, 0, 0);
-    t_color red2 = color(0.5, 0, 1);
+    t_color red2 = color(0, 0, 0);
     same_color_canva(&canva, red2);
     t_color result_before = pixel_at(canva, 0, 3);
     /*write_pixel(&canva, 0, 0, red);

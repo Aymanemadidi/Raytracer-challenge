@@ -18,17 +18,17 @@ void    same_color_canva(t_canvas *canva, t_color color)
 
     i = 0;
     j = 0;
-    while (i < canva->height)
+    while (i < canva->width) //5
     {
-        while (j < canva->width)
+        while (j < canva->height)//4 => 0,1,2,3
         {
-            write_pixel(canva, j, i, color);
-            //printf("color: %f\n", pixel_at(*canva, i, j).red);
+            write_pixel(canva, i, j, color);
             j++;
         }
         j = 0;
         i++;
     }
+    //printf("color: %f\n", pixel_at(*canva, 0, 3).red);
 }
 
 /*void fill_img(t_canva *canva)
