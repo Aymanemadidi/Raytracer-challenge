@@ -9,6 +9,10 @@
 #define FALSE 0
 #define EPSILON 0.00001
 
+typedef int (*Mat)[4];
+typedef int (*Mat3)[3];
+typedef int (*Mat2)[2];
+
 typedef struct s_rgb_color
 {
     int red;
@@ -95,19 +99,11 @@ void write_pixel(t_canvas *canva, int x, int y, t_color color);
 void    same_color_canva(t_canvas *canva, t_color color);
 t_canvas init_canva(float width, float height);
 int colors_are_equal(t_color c1, t_color c2);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void ppm_second(int *fd, t_canvas canva);
+int    *construct_ppm(t_canvas canva);
+void display3(int result[][3]);
+void display2(int **result);
+Mat3 submatrix4(int matrix[][4], int row, int column);
+int** submatrix3(int matrix[][3], int row, int column);
+int minor3(int matrix[][3], int row, int column);
 
