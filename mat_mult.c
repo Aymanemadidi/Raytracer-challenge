@@ -30,12 +30,24 @@ void getMatrixElements2(int matrix[][4], int buff[][4])
 }
 
 // function to display the matrix
-void display(float **result) {
+void displayInv(float **result) {
 
    printf("\nOutput Matrix:\n");
    for (int i = 0; i < 4; ++i) {
       for (int j = 0; j < 4; ++j) {
          printf("%f  ", result[i][j]);
+         if (j == 3)
+            printf("\n");
+      }
+   }
+}
+
+void display(int **result) {
+
+   printf("\nOutput Matrix:\n");
+   for (int i = 0; i < 4; ++i) {
+      for (int j = 0; j < 4; ++j) {
+         printf("%d  ", result[i][j]);
          if (j == 3)
             printf("\n");
       }
@@ -141,20 +153,6 @@ Mat multiply_identity(int mat[][4])
 
 int main() {
    int first[4][4], second[4][4], result[4][4];
-   /*printf("Enter rows and column for the first matrix: ");
-   scanf("%d %d", &r1, &c1);
-   printf("Enter rows and column for the second matrix: ");
-   scanf("%d %d", &r2, &c2);
-
-   // Taking input until
-   // 1st matrix columns is not equal to 2nd matrix row
-   while (c1 != r2) {
-      printf("Error! Enter rows and columns again.\n");
-      printf("Enter rows and columns for the first matrix: ");
-      scanf("%d%d", &r1, &c1);
-      printf("Enter rows and columns for the second matrix: ");
-      scanf("%d%d", &r2, &c2);
-   }*/
 
    int buff[4][4] = {{-4,2,-2,-3}, {9,6,2,6}, {0,-5,1,-5}, {0,0,0,0}};
    int buff1[4][4] = {{1,2,3,4}, {5,6,7,8}, {9,8,7,6}, {5,4,3,2}};
@@ -163,7 +161,7 @@ int main() {
    int buff3x3[3][3] = {{3,5,0}, {2,-1,-7}, {6,-1,5}};
    tuple t;
 
-   t = point(1, 2, 3);
+   //t = point(1, 2, 3);
 
    // get elements of the first matrix
    //getMatrixElements1(first, buff1);
@@ -193,6 +191,9 @@ int main() {
    //cofactor3(buff3x3, 1, 0);
 
    //Inverse
-   inverse(buff3);
+   //inverse(buff1);
+
+   //translation
+   translation(4, 1, 2);
    return 0;
 }

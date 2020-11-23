@@ -103,7 +103,8 @@ void ppm_second(int *fd, t_canvas canva);
 int    *construct_ppm(t_canvas canva);
 void display3(int **result);
 void display2(int **result);
-void display(float **result);
+void displayInv(float **result);
+void display(int **result);
 int** submatrix4(int matrix[][4], int row, int column);
 int** submatrix3(int matrix[][3], int row, int column);
 int minor3(int matrix[][3], int row, int column);
@@ -112,4 +113,5 @@ int determinant(int m[][4]);
 int determinant3(int **m);
 float **inverse(int matrix[][4]);
 int cofactor4(int matrix[][4], int row, int column);
+int **translation(int x, int y, int z);
 

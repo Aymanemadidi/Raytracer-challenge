@@ -170,6 +170,6 @@ float **inverse(int matrix[][4])
         col = 0;
         row++;
     }
-    display(result);
+    displayInv(result);
     return (result);
 }
