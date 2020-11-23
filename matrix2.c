@@ -30,7 +30,7 @@ int det2x2(int **mat)
     return (mat[0][0] * mat[1][1] - mat[0][1] * mat[1][0]);
 }
 
-Mat3 submatrix4(int matrix[][4], int row, int column)
+int** submatrix4(int matrix[][4], int row, int column)
 {   
     int i;
     int j;
@@ -61,7 +61,8 @@ Mat3 submatrix4(int matrix[][4], int row, int column)
         i++;
         k++;
     }
-    display3(result);
+    //display3(result);
+    return (result);
 }
 
 int** submatrix3(int matrix[][3], int row, int column)
@@ -96,7 +97,7 @@ int** submatrix3(int matrix[][3], int row, int column)
         i++;
         k++;
     }
-    display2(result);
+    //display2(result);
     return (result);
 }
 
@@ -121,5 +122,54 @@ int cofactor3(int matrix[][3], int row, int column)
     else
         cofactor = -1 * minor;
     printf("cofactor: %d\n", cofactor);
-    return (0);
+    return (cofactor);
+}
+
+int cofactor4(int matrix[][4], int row, int column)
+{
+    //int submatrix[2][2] = submatrix3(matrix, row, column);
+    int minor;
+    int cofactor;
+
+    minor = determinant3(submatrix4(matrix, row, column));
+    cofactor = 0;
+    if((row + column) % 2 == 0)
+        cofactor = minor;
+    else
+        cofactor = -1 * minor;
+    //printf("cofactor: %d\n", cofactor);
+    return (cofactor);
+}
+
+float **inverse(int matrix[][4])
+{
+    int det;
+    int row;
+    int col;
+    float c;
+    float **result = (float **)malloc(4 * sizeof(float *)); 
+    for (int i = 0; i < 4; i++) 
+        result[i] = (float *)malloc(4 * sizeof(float));    
+
+    det = determinant(matrix);
+    printf("det4: %d\n", det);
+    row = 0;
+    col = 0;
+    c = 0;
+    if (det == 0)
+        return (NULL);
+    while (row < 4)
+    {
+        while (col < 4)
+        {
+            c = cofactor4(matrix, row, col);
+            //printf("c: %d\ndet: %d\n", c, det);
+            result[col][row] = (float)c / det;
+            col++;
+        }
+        col = 0;
+        row++;
+    }
+    display(result);
+    return (result);
 }
