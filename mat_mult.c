@@ -30,7 +30,7 @@ void getMatrixElements2(int matrix[][4], int buff[][4])
 }
 
 // function to display the matrix
-void display(int result[][4]) {
+void display(int **result) {
 
    printf("\nOutput Matrix:\n");
    for (int i = 0; i < 4; ++i) {
@@ -61,21 +61,23 @@ int determinant(int m[][4])
    return (det);
 }
 
-Mat transpose_matrix(int buff[][4])
+int** transpose_matrix(int buff[][4])
 {
-
-   int matrix[4][4];
+    
+    int **result = (int **)malloc(4 * sizeof(int *)); 
+    for (int i = 0; i < 4; i++) 
+         result[i] = (int *)malloc(4 * sizeof(int));
    //int buff[4][4] = {{-2,1,2,3}, {3,2,1,-1}, {4,3,6,5}, {1,2,7,8}};
    
    for (int i = 0; i < 4; ++i) {
       for (int j = 0; j < 4; ++j) {
-         matrix[i][j] = buff[j][i];
+         result[i][j] = buff[j][i];
          //printf("Enter a%d%d: ", i + 1, j + 1);
-         //scanf("%d", &matrix[i][j]);
+         //scanf("%d", &result[i][j]);
       }
    }
-   display(matrix);
-   return (matrix);
+   display(result);
+   return (result);
 }
 
 tuple mat_tuple(int m[][4], tuple t)
@@ -144,7 +146,7 @@ int main() {
       scanf("%d%d", &r2, &c2);
    }*/
 
-   int buff[4][4] = {{1,2,3,4}, {2,4,4,2}, {8,6,4,1}, {0,0,0,1}};
+   int buff[4][4] = {{-4,2,-2,-3}, {9,6,2,6}, {0,-5,1,-5}, {0,0,0,0}};
    int buff1[4][4] = {{1,2,3,4}, {5,6,7,8}, {9,8,7,6}, {5,4,3,2}};
    int buff2[4][4] = {{-2,1,2,3}, {3,2,1,-1}, {4,3,6,5}, {1,2,7,8}};
    int buff3[4][4] = {{-6,1,1,6}, {-8,5,8,6}, {-1,0,8,2}, {-7,1,-1,1}};
@@ -174,10 +176,11 @@ int main() {
    //transpose_matrix(buff);
 
    //determinant
-   //determinant(buff);
+   printf("det: %d\n", determinant(buff));
 
-   //subMatrix
-   minor3(buff3x3, 1, 0);
+   //subMatrix  Minor   Cofactor
+   //minor3(buff3x3, 1, 0);
+   //cofactor3(buff3x3, 1, 0);
 
    return 0;
 }

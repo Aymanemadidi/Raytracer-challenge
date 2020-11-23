@@ -101,9 +101,11 @@ t_canvas init_canva(float width, float height);
 int colors_are_equal(t_color c1, t_color c2);
 void ppm_second(int *fd, t_canvas canva);
 int    *construct_ppm(t_canvas canva);
-void display3(int result[][3]);
+void display3(int **result);
 void display2(int **result);
+void display(int **result);
 Mat3 submatrix4(int matrix[][4], int row, int column);
 int** submatrix3(int matrix[][3], int row, int column);
 int minor3(int matrix[][3], int row, int column);
+int cofactor3(int matrix[][3], int row, int column);
 
