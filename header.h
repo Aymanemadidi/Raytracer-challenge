@@ -8,6 +8,7 @@
 #define TRUE 1
 #define FALSE 0
 #define EPSILON 0.00001
+#define M_PI 3.14159265358979323846
 
 typedef int (*Mat)[4];
 typedef int (*Mat3)[3];
@@ -57,7 +58,7 @@ typedef struct s_tuple
 }*/
 
 
-typedef struct s_projectile
+/*typedef struct s_projectile
 {
     tuple position;
     tuple velocity;
@@ -69,7 +70,17 @@ typedef struct s_envir
     tuple gravity;
     tuple wind;
 
-} t_envir;
+} t_envir;*/
+
+typedef struct s_shear
+{
+    float x_y;
+    float x_z;
+    float y_x;
+    float y_z;
+    float z_x;
+    float z_y;
+} t_shear;
 
 int is_vec(tuple t);
 int is_point(tuple t);
@@ -96,6 +107,7 @@ t_color mult_color(t_color c1, t_color c2);
 t_color pixel_at(t_canvas c, float x, float y);
 t_pixel get_pixel(t_canvas c, float x, float y);
 void write_pixel(t_canvas *canva, int x, int y, t_color color);
+void write_pixel2(t_canvas *canva, int x, int y, t_color color);
 void    same_color_canva(t_canvas *canva, t_color color);
 t_canvas init_canva(float width, float height);
 int colors_are_equal(t_color c1, t_color c2);
@@ -114,4 +126,11 @@ int determinant3(int **m);
 float **inverse(int matrix[][4]);
 int cofactor4(int matrix[][4], int row, int column);
 int **translation(int x, int y, int z);
+int **scaling(int x, int y, int z);
+float **rotation_x(double r);
+float **rotation_y(double r);
+float **rotation_z(double r);
+float **shearing(t_shear s);
+tuple mat_tuple(int** m, tuple t);
+tuple mat_tuple_float(float **m, tuple t);
 

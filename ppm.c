@@ -140,20 +140,22 @@ void ppm_second(int *fd, t_canvas canva)
     }
 }
 
-/*int     main()
+int     main()
 {   
-    t_canvas canva = init_canva(400, 400);
+    t_canvas canva = init_canva(150, 150);
     int *d ;
     d = NULL;
     t_color red = color(1, 0, 0);
-    t_color red2 = color(1, 0.8, 0.6);
+    t_color red2 = color(0.1, 0, 0);
     same_color_canva(&canva, red2);
+    printf("width: %d\n", canva.width);
     //t_color result_before = pixel_at(canva, 0, 3);
     //write_pixel(&canva, 0, 0, red);
     //write_pixel(&canva, 2, 1, color(-0.5, 0.5, 0));
-    write_pixel(&canva, 4, 2, color(0, 0, 1.5));
-    /*write_pixel(&canva, 0, 1, red2);
-    write_pixel(&canva, 1, 0, red);
+    write_pixel2(&canva, 1, 0, color(0, 0, 1.5));
+    //write_pixel(&canva, 0, 1, color(0, 0, 1.5));
+    //write_pixel(&canva, 0, 75 * 1, red);
+    //write_pixel(&canva, 75 * 1, 0, red);
     d = construct_ppm(canva);
     ppm_second(d,canva);
     //t_color result = pixel_at(canva, 0, 3);
@@ -161,4 +163,4 @@ void ppm_second(int *fd, t_canvas canva)
     printf("fd: %d\n", *d);
 
     return (0);
-}*/
+}
