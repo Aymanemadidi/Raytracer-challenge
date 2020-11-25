@@ -142,17 +142,53 @@ void ppm_second(int *fd, t_canvas canva)
 
 int     main()
 {   
-    t_canvas canva = init_canva(150, 150);
+    t_canvas canva = init_canva(300, 300);
     int *d ;
     d = NULL;
     t_color red = color(1, 0, 0);
-    t_color red2 = color(0.1, 0, 0);
+    t_color red2 = color(0, 0, 0);
+    t_color white = color(1, 1, 1);
     same_color_canva(&canva, red2);
-    printf("width: %d\n", canva.width);
     //t_color result_before = pixel_at(canva, 0, 3);
     //write_pixel(&canva, 0, 0, red);
     //write_pixel(&canva, 2, 1, color(-0.5, 0.5, 0));
-    write_pixel2(&canva, 1, 0, color(0, 0, 1.5));
+    //write_pixel2(&canva, 0, 0, color(0, 0, 1.5));
+    //write_pixel2(&canva, 0, 1, color(1, 1, 1));
+    //write_pixel2(&canva, 0, 0.5, color(0, 0, 1.5));
+
+/*---------------CLOCK CODE------------------------
+
+    tuple point12 = mat_tuple_float(rotation_x(1 * M_PI), point(0, 1, 0));
+    tuple point1 = mat_tuple_float(rotation_z(1 * M_PI/6), point(0, -1, 0));
+    tuple point2 = mat_tuple_float(rotation_z(2 * M_PI/6), point(0, -1, 0));
+    tuple point3 = mat_tuple_float(rotation_z(3 * M_PI/6), point(0, -1, 0));
+    tuple point4 = mat_tuple_float(rotation_z(4 * M_PI/6), point(0, -1, 0));
+    tuple point5 = mat_tuple_float(rotation_z(5 * M_PI/6), point(0, -1, 0));
+    tuple point6 = mat_tuple_float(rotation_z(6 * M_PI/6), point(0, -1, 0));
+    tuple point7 = mat_tuple_float(rotation_z(7 * M_PI/6), point(0, -1, 0));
+    tuple point8 = mat_tuple_float(rotation_z(8 * M_PI/6), point(0, -1, 0));
+    tuple point9 = mat_tuple_float(rotation_z(9 * M_PI/6), point(0, -1, 0));
+    tuple point10 = mat_tuple_float(rotation_z(10 * M_PI/6), point(0, -1, 0));
+    tuple point11 = mat_tuple_float(rotation_z(11* M_PI/6), point(0, -1, 0));
+    //printf("x: %d\ny: %d\n", point1.x, point1.y);
+    //write_pixel2(&canva, point1.x, point1.y, color(0, 0, 1.5));
+    write_pixel2(&canva, floorf(point12.x * 10) / 10, floorf(point12.y * 10) / 10, white);
+    write_pixel2(&canva, floorf(point1.x * 10) / 10, floorf(point1.y * 10) / 10, white);
+    write_pixel2(&canva, point2.x, point2.y, white);
+    write_pixel2(&canva, point3.x, point3.y, white);
+    write_pixel2(&canva, point4.x, point4.y, white);
+    write_pixel2(&canva, floorf(point5.x * 10) / 10, floorf(point5.y * 10) / 10, white);
+    write_pixel2(&canva, point6.x, point6.y, white);
+    write_pixel2(&canva, floorf(point7.x * 10) / 10, floorf(point7.y * 10) / 10, white);
+    write_pixel2(&canva, point8.x, point8.y, white);
+    write_pixel2(&canva, point9.x, point9.y, white);
+    write_pixel2(&canva, point10.x, point10.y, white);
+    write_pixel2(&canva, floorf(point11.x * 10) / 10, floorf(point11.y * 10) / 10, white);
+
+------------------END CLOCK CODE----------------*/    
+    //write_pixel2(&canva, 1, 0.50, color(0, 0, 1.5));
+    //write_pixel2(&canva, 1, 0, color(0, 0, 1.5));
+    //write_pixel2(&canva, -1, 0, color(0, 0, 1.5));
     //write_pixel(&canva, 0, 1, color(0, 0, 1.5));
     //write_pixel(&canva, 0, 75 * 1, red);
     //write_pixel(&canva, 75 * 1, 0, red);

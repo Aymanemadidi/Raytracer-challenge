@@ -49,13 +49,12 @@ void write_pixel(t_canvas *canva, int x, int y, t_color color)
     canva->img[(int)((y * canva->width) + x)].color.blue = color.blue;
 }
 
-void write_pixel2(t_canvas *canva, int x, int y, t_color color)
+void write_pixel2(t_canvas *canva, float x, float y, t_color color)
 {   
-    printf("value: %d\n", canva->width);
-    canva->img[(int)((y * (canva->width/2)) + x + canva->width/2 * canva->height/2) + 6000].color.red = color.red;
+    canva->img[(int)((40 * y * (canva->width) + 40 * x + (canva->width * (5 + canva->height))/2))/*/2)) + x + canva->width/2 * canva->height/2) + 6000*/].color.red = color.red;
     //printf("write red: %f\n", canva->img->color.red);
-    canva->img[(int)((y * (canva->width/2)) + x + canva->width/2 * canva->height/2) + 6000].color.green = color.green;
-    canva->img[(int)((y * (canva->width/2)) + x + canva->width/2 * canva->height/2) + 6000].color.blue = color.blue;
+    canva->img[(int)((40 * y * (canva->width) + 40 * x + (canva->width * (5 + canva->height))/2))/*/2)) + x + canva->width/2 * canva->height/2) + 6000*/].color.green = color.green;
+    canva->img[(int)((40 * y * (canva->width) + 40 * x + (canva->width * (5 + canva->height))/2))/*/2)) + x + canva->width/2 * canva->height/2) + 6000*/].color.blue = color.blue;
 }
 
 t_color pixel_at(t_canvas canva, float x, float y)

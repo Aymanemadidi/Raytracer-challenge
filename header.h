@@ -107,7 +107,7 @@ t_color mult_color(t_color c1, t_color c2);
 t_color pixel_at(t_canvas c, float x, float y);
 t_pixel get_pixel(t_canvas c, float x, float y);
 void write_pixel(t_canvas *canva, int x, int y, t_color color);
-void write_pixel2(t_canvas *canva, int x, int y, t_color color);
+void write_pixel2(t_canvas *canva, float x, float y, t_color color);
 void    same_color_canva(t_canvas *canva, t_color color);
 t_canvas init_canva(float width, float height);
 int colors_are_equal(t_color c1, t_color c2);

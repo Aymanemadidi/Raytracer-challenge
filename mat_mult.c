@@ -168,7 +168,7 @@ Mat multiply_identity(int mat[][4])
 
 
 
-int main() {
+/*int main() {
    int first[4][4], second[4][4], result[4][4];
 
    int buff[4][4] = {{-4,2,-2,-3}, {9,6,2,6}, {0,-5,1,-5}, {0,0,0,0}};
@@ -228,8 +228,8 @@ int main() {
    s.z_x = 0;
    s.z_y = 1;
 
-   shearing(s);*/
+   shearing(s);
 
-   
+
    return 0;
-}
+}*/

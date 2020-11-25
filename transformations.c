@@ -178,7 +178,7 @@ float **rotation_z(double r)
     return (result);
 }
 
-float **shearing(t_shear s)
+float**shearing(t_shear s)
 {
     int i;
     int j;
