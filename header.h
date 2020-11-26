@@ -48,6 +48,25 @@ typedef struct s_tuple
     float w;
 } tuple;
 
+typedef struct s_ray
+{
+    tuple origin;
+    tuple direction;
+} t_ray;
+
+typedef struct s_sphere
+{
+    int id;
+    int radius;
+    tuple origin;
+} t_sphere;
+
+typedef struct s_intersection
+{
+    float t;
+    int object_id;
+} t_intersection;
+
 /*t_canvasss init_canvasss(int width, int height)
 {
     t_canvass result;
