@@ -80,6 +80,16 @@ t_intersection* intersections(t_intersection i1, t_intersection i2)
     return (result);
 }
 
+t_intersection hit(t_intersection *xs)
+{
+    if (xs[0].t < 0 && xs[1].t < 0)
+        return;
+    if (xs[0].t > xs[1].t)
+        return (xs[1]);
+    else
+        return (xs[0]);    
+}
+
 int main()
 {   
     t_ray r = ray(point(0, 0, -5), vector(0, 0, 1));
