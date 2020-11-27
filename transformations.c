@@ -1,17 +1,17 @@
 #include "header.h"
 
-int **translation(int x, int y, int z)
+float **translation(int x, int y, int z)
 {
     int i;
     int j;
-    int **result;
+    float **result;
 
     i = 0;
     j = 0;
-    result = (int **)malloc(4 * sizeof(int *));
+    result = (float **)malloc(4 * sizeof(float *));
     while (i < 4)
     {
-        result[i] = (int *)malloc(4 * sizeof(int));
+        result[i] = (float *)malloc(4 * sizeof(float));
         i++;
     }
         
@@ -36,22 +36,22 @@ int **translation(int x, int y, int z)
         j = 0;
         i++;
     }
-    display(result);
+    //display(result);
     return (result);
 }
 
-int **scaling(int x, int y, int z)
+float **scaling(int x, int y, int z)
 {
     int i;
     int j;
-    int **result;
+    float **result;
 
     i = 0;
     j = 0;
-    result = (int **)malloc(4 * sizeof(int *));
+    result = (float **)malloc(4 * sizeof(float *));
     while (i < 4)
     {
-        result[i] = (int *)malloc(4 * sizeof(int));
+        result[i] = (float *)malloc(4 * sizeof(float));
         i++;
     }    
     i = 0;
@@ -69,7 +69,7 @@ int **scaling(int x, int y, int z)
     result[1][1] = y;
     result[2][2] = z;
     result[3][3] = 1;
-    display(result);
+    //displayInv(result);
     return (result);
 }
 
@@ -104,7 +104,7 @@ float **rotation_x(double r)
     result[2][2] = cos(r);
     result[2][1] = sin(r);
     result[3][3] = 1;
-    displayInv(result);
+    //displayInv(result);
     return (result);
 }
 
@@ -139,7 +139,7 @@ float **rotation_y(double r)
     result[2][2] = cos(r);
     result[1][1] = 1;
     result[3][3] = 1;
-    displayInv(result);
+    //displayInv(result);
     return (result);
 }
 
@@ -174,7 +174,7 @@ float **rotation_z(double r)
     result[1][1] = cos(r);
     result[2][2] = 1;
     result[3][3] = 1;
-    displayInv(result);
+    //displayInv(result);
     return (result);
 }
 
@@ -212,6 +212,19 @@ float**shearing(t_shear s)
     result[1][2] = s.y_z;
     result[2][0] = s.z_x;
     result[2][1] = s.z_y;
-    displayInv(result);
+    //displayInv(result);
     return (result);
+}
+
+t_ray transform(t_ray r, float **trans_matrix)
+{   
+    t_ray result;
+    result.origin = mat_tuple(trans_matrix, r.origin);
+    result.direction = mat_tuple(trans_matrix, r.direction);
+    return (result);
+}
+
+void set_transform(t_sphere *s, float **trans_matrix)
+{
+    s->transform = trans_matrix;
 }

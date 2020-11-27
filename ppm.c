@@ -142,13 +142,32 @@ void ppm_second(int *fd, t_canvas canva)
 
 int     main()
 {   
-    t_canvas canva = init_canva(300, 300);
+    int canva_pixel = 100;
+    t_canvas canva = init_canva(canva_pixel, canva_pixel);
     int *d ;
     d = NULL;
     t_color red = color(1, 0, 0);
-    t_color red2 = color(0, 0, 0);
-    t_color white = color(1, 1, 1);
-    same_color_canva(&canva, red2);
+    t_color black = color(0, 0, 0);
+    //t_color white = color(1, 1, 1);
+    int x;
+    int y;
+
+    x = 0;
+    y = 0;
+    same_color_canva(&canva, black);
+    t_sphere s;
+    tuple position;
+    t_ray r;
+    tuple ray_origin = point(0, 0, -5);
+    t_intersection* xs;
+    t_intersection hitt;
+    int wall_z;
+    int wall_size;
+    float pixel_size;
+    float half;
+    float world_x;
+    float world_y;
+    s = sphere(1);
     //t_color result_before = pixel_at(canva, 0, 3);
     //write_pixel(&canva, 0, 0, red);
     //write_pixel(&canva, 2, 1, color(-0.5, 0.5, 0));
@@ -185,7 +204,37 @@ int     main()
     write_pixel2(&canva, point10.x, point10.y, white);
     write_pixel2(&canva, floorf(point11.x * 10) / 10, floorf(point11.y * 10) / 10, white);
 
-------------------END CLOCK CODE----------------*/    
+------------------END CLOCK CODE----------------*/
+
+//----------2D Sphere code------------------------
+    
+    while (y < canva_pixel - 1)
+    {
+        tuple ray_origin = point(0, 0, -5);
+        wall_z = 10;
+        wall_size = 7;
+        pixel_size = ((float)wall_size / (float)canva_pixel);
+        half = (float)wall_size / 2;
+        world_y = half - pixel_size * y;
+        while (x < canva_pixel - 1)
+        {
+            world_x = -1 * half + pixel_size * x;
+            position = point(world_x, world_y, wall_z);
+            r = ray(ray_origin, normalise_vec(substract_tuples(position, ray_origin)));
+            xs = intersect(s, r);
+            //printf("xs: %d\n", xs[0].defined);
+            if (xs != NULL)
+            {
+                hitt = hit(xs);
+                write_pixel(&canva, x, y, red);
+            }
+            x++;    
+        }
+        x = 0;
+        y++;
+    }
+
+
     //write_pixel2(&canva, 1, 0.50, color(0, 0, 1.5));
     //write_pixel2(&canva, 1, 0, color(0, 0, 1.5));
     //write_pixel2(&canva, -1, 0, color(0, 0, 1.5));

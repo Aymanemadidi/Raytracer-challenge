@@ -30,7 +30,7 @@ int det2x2(int **mat)
     return (mat[0][0] * mat[1][1] - mat[0][1] * mat[1][0]);
 }
 
-int** submatrix4(int matrix[][4], int row, int column)
+int** submatrix4(float **matrix, int row, int column)
 {   
     int i;
     int j;
@@ -65,7 +65,7 @@ int** submatrix4(int matrix[][4], int row, int column)
     return (result);
 }
 
-int** submatrix3(int matrix[][3], int row, int column)
+int** submatrix3(float **matrix, int row, int column)
 {   
     printf("here");
     int i;
@@ -101,15 +101,15 @@ int** submatrix3(int matrix[][3], int row, int column)
     return (result);
 }
 
-int minor3(int matrix[][3], int row, int column)
+int minor3(float **matrix, int row, int column)
 {
     //int submatrix[2][2] = submatrix3(matrix, row, column);
     int minor = det2x2(submatrix3(matrix, row, column));
-    printf("minor: %d\n", minor);
+    //printf("minor: %d\n", minor);
     return (0);
 }
 
-int cofactor3(int matrix[][3], int row, int column)
+int cofactor3(float **matrix, int row, int column)
 {
     //int submatrix[2][2] = submatrix3(matrix, row, column);
     int minor;
@@ -125,7 +125,7 @@ int cofactor3(int matrix[][3], int row, int column)
     return (cofactor);
 }
 
-int cofactor4(int matrix[][4], int row, int column)
+int cofactor4(float **matrix, int row, int column)
 {
     //int submatrix[2][2] = submatrix3(matrix, row, column);
     int minor;
@@ -141,9 +141,9 @@ int cofactor4(int matrix[][4], int row, int column)
     return (cofactor);
 }
 
-float **inverse(int matrix[][4])
+float **inverse(float **matrix)
 {
-    int det;
+    float det;
     int row;
     int col;
     float c;
@@ -152,7 +152,7 @@ float **inverse(int matrix[][4])
         result[i] = (float *)malloc(4 * sizeof(float));    
 
     det = determinant(matrix);
-    printf("det4: %d\n", det);
+    //printf("det4: %f\n", det);
     row = 0;
     col = 0;
     c = 0;
@@ -170,6 +170,6 @@ float **inverse(int matrix[][4])
         col = 0;
         row++;
     }
-    displayInv(result);
+    //displayInv(result);
     return (result);
 }

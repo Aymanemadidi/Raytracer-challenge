@@ -58,6 +58,7 @@ typedef struct s_sphere
 {
     int id;
     int radius;
+    float **transform;
     tuple origin;
 } t_sphere;
 
@@ -65,6 +66,7 @@ typedef struct s_intersection
 {
     float t;
     int object_id;
+    //int defined;
 } t_intersection;
 
 /*t_canvasss init_canvasss(int width, int height)
@@ -136,20 +138,31 @@ void display3(int **result);
 void display2(int **result);
 void displayInv(float **result);
 void display(int **result);
-int** submatrix4(int matrix[][4], int row, int column);
-int** submatrix3(int matrix[][3], int row, int column);
-int minor3(int matrix[][3], int row, int column);
-int cofactor3(int matrix[][3], int row, int column);
-int determinant(int m[][4]);
+int** submatrix4(float **matrix, int row, int column);
+int** submatrix3(float **matrix, int row, int column);
+int minor3(float **matrix, int row, int column);
+int cofactor3(float** matrix, int row, int column);
+float determinant(float **m);
 int determinant3(int **m);
-float **inverse(int matrix[][4]);
-int cofactor4(int matrix[][4], int row, int column);
-int **translation(int x, int y, int z);
-int **scaling(int x, int y, int z);
+float **inverse(float **matrix);
+int cofactor4(float **matrix, int row, int column);
+float **translation(int x, int y, int z);
+float **scaling(int x, int y, int z);
 float **rotation_x(double r);
 float **rotation_y(double r);
 float **rotation_z(double r);
 float **shearing(t_shear s);
-tuple mat_tuple(int** m, tuple t);
+float** identity_matrix();
+tuple mat_tuple(float** m, tuple t);
 tuple mat_tuple_float(float **m, tuple t);
+t_ray transform(t_ray r, float **trans_matrix);
+void set_transform(t_sphere *s, float **trans_matrix);
+t_ray ray(tuple origin, tuple direction);
+t_sphere sphere(int id);
+t_intersection hit(t_intersection *xs);
+t_intersection* intersect(t_sphere s, t_ray ray);
+t_intersection intersection(float t, int object_id);
+float cal_delta(t_ray *ray, t_sphere *s);
+
+
 

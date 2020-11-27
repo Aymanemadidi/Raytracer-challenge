@@ -70,23 +70,23 @@ int main()
 
     //----------Pixel_at Test-------------
     
-    t_canvas	canvas;
+    /*t_canvas	canvas;
     t_color	red = color(1, 0, 0);
     t_color	green = color(0, 0.5, 0);
-    t_color	blue = color(0, 0, 1);
+    t_color	blue = color(0, 0, 1);*/
     //t_pixel *ptr1;
     //t_color red = color (1, 0, 0);
     //t_color out_color;
     //int i = 0;
 
-    canvas = init_canva(10, 20);
+    /*canvas = init_canva(10, 20);
     write_pixel(&canvas, 0, 0, red);
     write_pixel(&canvas, 2, 1, green);
-    write_pixel(&canvas, 4, 2, blue);
+    write_pixel(&canvas, 4, 2, blue);*/
     //t_color result_color = pixel_at(canvas, 2, 3);
     //printf("red = %f\ngreen = %f\nblue = %f\n", result_color.red, result_color.green, result_color.blue);
 
-//-----------ppm tests-----------------
+//-----------trans-----------------
 
 
 }

@@ -54,9 +54,9 @@ void display(int **result) {
    }
 }
 
-int determinant(int m[][4]) 
+float determinant(float **m) 
 {
-   int det = 
+   float det = 
       m[0][3] * m[1][2] * m[2][1] * m[3][0] - m[0][2] * m[1][3] * m[2][1] * m[3][0] -
       m[0][3] * m[1][1] * m[2][2] * m[3][0] + m[0][1] * m[1][3] * m[2][2] * m[3][0] +
       m[0][2] * m[1][1] * m[2][3] * m[3][0] - m[0][1] * m[1][2] * m[2][3] * m[3][0] -
@@ -102,7 +102,7 @@ int** transpose_matrix(int buff[][4])
    return (result);
 }
 
-tuple mat_tuple(int **m, tuple t)
+tuple mat_tuple(float **m, tuple t)
 {
    tuple result;
 
@@ -111,10 +111,10 @@ tuple mat_tuple(int **m, tuple t)
    result.z = t.x * m[2][0] + t.y * m[2][1] + t.z * m[2][2] + t.w * m[2][3];
    result.w = t.x * m[3][0] + t.y * m[3][1] + t.z * m[3][2] + t.w * m[3][3];
 
-   printf("x: %f\n", result.x);
-   printf("y: %f\n", result.y);
-   printf("z: %f\n", result.z);
-   printf("w: %f\n", result.w);
+   //printf("x: %f\n", result.x);
+   //printf("y: %f\n", result.y);
+   //printf("z: %f\n", result.z);
+   //printf("w: %f\n", result.w);
 
    return (result);
 }
@@ -166,6 +166,37 @@ Mat multiply_identity(int mat[][4])
    return (multiplyMatrices(mat, identity, result));
 }
 
+float** identity_matrix()
+{
+   int i;
+   int j;
+   float **result;
+
+   i = 0;
+   j = 0;
+   result = (float **)malloc(4 * sizeof(float *));
+   while (i < 4)
+   {
+      result[i] = (float *)malloc(4 * sizeof(float));
+      i++;
+   }    
+   i = 0;
+   while (i < 4)
+   {
+      while (j < 4)
+      {  
+         if (i == j)
+            result[i][j] = 1;
+         else      
+            result[i][j] = 0;
+         j++;
+      }
+      j = 0;
+      i++;
+   }
+   //displayInv(result);
+   return (result);
+}
 
 
 /*int main() {
