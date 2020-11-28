@@ -144,6 +144,7 @@ int minor3(float **matrix, int row, int column);
 int cofactor3(float** matrix, int row, int column);
 float determinant(float **m);
 int determinant3(int **m);
+float** transpose_matrix(float **buff);
 float **inverse(float **matrix);
 int cofactor4(float **matrix, int row, int column);
 float **translation(int x, int y, int z);
@@ -163,6 +164,6 @@ t_intersection hit(t_intersection *xs);
 t_intersection* intersect(t_sphere s, t_ray ray);
 t_intersection intersection(float t, int object_id);
 float cal_delta(t_ray *ray, t_sphere *s);
-
+tuple normal_at(t_sphere s, tuple p);
 
 

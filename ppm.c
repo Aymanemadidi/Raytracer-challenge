@@ -226,7 +226,7 @@ int     main()
             if (xs != NULL)
             {
                 hitt = hit(xs);
-                write_pixel(&canva, x, y, red);
+                write_pixel(&canva, floorf(x * 10) / 10, floorf(y * 10) / 10, red);
             }
             x++;    
         }

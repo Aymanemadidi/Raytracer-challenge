@@ -83,12 +83,12 @@ int determinant3(int **m)
    return (det);
 }
 
-int** transpose_matrix(int buff[][4])
+float** transpose_matrix(float **buff)
 {
     
-    int **result = (int **)malloc(4 * sizeof(int *)); 
+    float **result = (float **)malloc(4 * sizeof(float *)); 
     for (int i = 0; i < 4; i++) 
-         result[i] = (int *)malloc(4 * sizeof(int));
+         result[i] = (float *)malloc(4 * sizeof(float));
    //int buff[4][4] = {{-2,1,2,3}, {3,2,1,-1}, {4,3,6,5}, {1,2,7,8}};
    
    for (int i = 0; i < 4; ++i) {
