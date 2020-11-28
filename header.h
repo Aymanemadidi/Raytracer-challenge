@@ -54,12 +54,22 @@ typedef struct s_ray
     tuple direction;
 } t_ray;
 
+typedef struct s_material
+{
+    t_color color;
+    float ambient;
+    float diffuse;
+    float specular;
+    float shiness;
+} t_material;
+
 typedef struct s_sphere
 {
     int id;
     int radius;
     float **transform;
     tuple origin;
+    t_material m;
 } t_sphere;
 
 typedef struct s_intersection
@@ -68,6 +78,14 @@ typedef struct s_intersection
     int object_id;
     //int defined;
 } t_intersection;
+
+typedef struct s_light
+{
+    tuple position;
+    t_color intensity;
+} t_light;
+
+
 
 /*t_canvasss init_canvasss(int width, int height)
 {
@@ -165,5 +183,9 @@ t_intersection* intersect(t_sphere s, t_ray ray);
 t_intersection intersection(float t, int object_id);
 float cal_delta(t_ray *ray, t_sphere *s);
 tuple normal_at(t_sphere s, tuple p);
+tuple reflect(tuple in, tuple normal);
+t_light point_light(tuple position, t_color intensity);
+t_material material();
+t_color lightning(t_material m, t_light l, tuple point, tuple eyev, tuple normalv);
 
 

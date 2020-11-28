@@ -22,7 +22,7 @@ tuple reflect(tuple in, tuple normal)
             scalar_product(in, normal), normal)));
 }
 
-int main()
+/*int main()
 {
     t_sphere s;
     tuple n;
@@ -42,4 +42,4 @@ int main()
     //set_transform(&s, translation(0, 1, 0));
     //n = normal_at(s, point(0, 1.70711, -0.70711));
     return (0);
-}
+}*/

@@ -22,6 +22,7 @@ t_sphere sphere(int id)
     s.radius = 1;
     s.origin = point(0, 0, 0);
     s.transform = identity_matrix();
+    s.m = material();
     
     return (s);
 }
