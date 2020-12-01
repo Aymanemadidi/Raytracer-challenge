@@ -142,7 +142,7 @@ void ppm_second(int *fd, t_canvas canva)
 
 int     main()
 {   
-    int canva_pixel = 100;
+    int canva_pixel = 250;
     t_canvas canva = init_canva(canva_pixel, canva_pixel);
     int *d ;
     d = NULL;
@@ -161,6 +161,12 @@ int     main()
     tuple ray_origin = point(0, 0, -5);
     t_intersection* xs;
     t_intersection hitt;
+    tuple light_position;
+    t_color light_color;
+    t_light light;
+    tuple p;
+    tuple normal;
+    tuple eye;
     int wall_z;
     int wall_size;
     float pixel_size;
@@ -168,6 +174,11 @@ int     main()
     float world_x;
     float world_y;
     s = sphere(1);
+    s.m = material();
+    s.m.color = color(1, 0.2, 1);
+    light_position = point(-10, 10, -10);
+    light_color = color(1, 1, 1);
+    light = point_light(light_position, light_color);
     //t_color result_before = pixel_at(canva, 0, 3);
     //write_pixel(&canva, 0, 0, red);
     //write_pixel(&canva, 2, 1, color(-0.5, 0.5, 0));
@@ -226,6 +237,10 @@ int     main()
             if (xs != NULL)
             {
                 hitt = hit(xs);
+                p = posit(r, hitt.t);
+                normal = normal_at(s, p);
+                eye = scalar_multiply(-1, r.direction);
+                red = lightning(s.m, light, p, eye, normal);
                 write_pixel(&canva, floorf(x * 10) / 10, floorf(y * 10) / 10, red);
             }
             x++;    

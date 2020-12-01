@@ -10,7 +10,7 @@ t_ray ray(tuple origin, tuple direction)
     return (r);
 }
 
-tuple position(t_ray ray, float t)
+tuple posit(t_ray ray, float t)
 {
     return (add_tuples(ray.origin, scalar_multiply(t, ray.direction)));
 }
@@ -63,7 +63,7 @@ t_intersection* intersect(t_sphere s, t_ray ray)
     
 
     t_ray ray2 = transform(ray, inverse(s.transform));
-    displayInv(s.transform);
+    //displayInv(s.transform);
     sphere_to_ray = substract_tuples(ray2.origin, point(0, 0, 0));
     a = scalar_product(ray2.direction, ray2.direction);
     b = 2 * scalar_product(ray2.direction, sphere_to_ray);

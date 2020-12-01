@@ -85,6 +85,11 @@ typedef struct s_light
     t_color intensity;
 } t_light;
 
+typedef struct s_world
+{   
+    t_light light;
+    t_sphere *arr;
+} t_world;
 
 
 /*t_canvasss init_canvasss(int width, int height)
@@ -177,6 +182,7 @@ tuple mat_tuple_float(float **m, tuple t);
 t_ray transform(t_ray r, float **trans_matrix);
 void set_transform(t_sphere *s, float **trans_matrix);
 t_ray ray(tuple origin, tuple direction);
+tuple posit(t_ray ray, float t);
 t_sphere sphere(int id);
 t_intersection hit(t_intersection *xs);
 t_intersection* intersect(t_sphere s, t_ray ray);

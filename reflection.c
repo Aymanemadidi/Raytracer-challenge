@@ -61,7 +61,7 @@ t_color lightning(t_material m, t_light l, tuple point, tuple eyev, tuple normal
     return (add_colors(add_colors(ambient, diffuse), specular));
 }
 
-int main()
+/*int main()
 {
     t_material m;
     tuple position;
@@ -107,7 +107,7 @@ int main()
     result = lightning(m, light, position, eyev, normalv);
     printf("red: %f\n", result.red);
     printf("green: %f\n", result.green);
-    printf("blue: %f\n", result.blue);*/
+    printf("blue: %f\n", result.blue);
 
 //--test5--
     eyev = vector(0, 0, -1);
@@ -118,4 +118,4 @@ int main()
     printf("green: %f\n", result.green);
     printf("blue: %f\n", result.blue);      
 
-}
+}*/
