@@ -73,9 +73,9 @@ float determinant(float **m)
    return (det);
 }
 
-int determinant3(int **m) 
+float determinant3(float **m) 
 {
-   int det = 
+   float det = 
       m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1]) -
       m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0]) +
       m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0]);
@@ -164,6 +164,38 @@ Mat multiply_identity(int mat[][4])
    int identity[4][4] = {{1,0,0,0}, {0,1,0,0}, {0,0,1,0}, {0,0,0,1}};
    int result[4][4];
    return (multiplyMatrices(mat, identity, result));
+}
+
+float** init_matrix(float arr[16])
+{
+   int i;
+   int j;
+   int k;
+   float **result;
+
+   i = 0;
+   j = 0;
+   k = 0;
+   result = (float **)malloc(4 * sizeof(float *));
+   while (i < 4)
+   {
+      result[i] = (float *)malloc(4 * sizeof(float));
+      i++;
+   }    
+   i = 0;
+   while (i < 4)
+   {
+      while (j < 4)
+      {      
+         result[i][j] = arr[k];
+         j++;
+         k++;
+      }
+      j = 0;
+      i++;
+   }
+   //displayInv(result);
+   return (result);
 }
 
 float** identity_matrix()

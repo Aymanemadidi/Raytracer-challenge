@@ -34,3 +34,11 @@ int tuples_are_equal(tuple t1, tuple t2)
         return (FALSE);
         
 }
+
+int a_less_b(float a, float b)
+{
+    if (a < b)
+        return (1);
+    else
+        return (0);    
+}

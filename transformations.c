@@ -1,6 +1,6 @@
 #include "header.h"
 
-float **translation(int x, int y, int z)
+float **translation(float x, float y, float z)
 {
     int i;
     int j;
@@ -40,7 +40,7 @@ float **translation(int x, int y, int z)
     return (result);
 }
 
-float **scaling(int x, int y, int z)
+float **scaling(float x, float y, float z)
 {
     int i;
     int j;
@@ -220,6 +220,7 @@ t_ray transform(t_ray r, float **trans_matrix)
 {   
     t_ray result;
     result.origin = mat_tuple(trans_matrix, r.origin);
+    //printf("res.origin: %f\n", r.origin.x);
     result.direction = mat_tuple(trans_matrix, r.direction);
     return (result);
 }

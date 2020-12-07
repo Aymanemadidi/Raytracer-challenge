@@ -30,15 +30,15 @@ int det2x2(int **mat)
     return (mat[0][0] * mat[1][1] - mat[0][1] * mat[1][0]);
 }
 
-int** submatrix4(float **matrix, int row, int column)
+float** submatrix4(float **matrix, int row, int column)
 {   
     int i;
     int j;
     int k;
     int l;
-    int **result = (int **)malloc(3 * sizeof(int *)); 
+    float **result = (float **)malloc(3 * sizeof(float *)); 
     for (i = 0; i < 3; i++) 
-        result[i] = (int *)malloc(3 * sizeof(int));
+        result[i] = (float *)malloc(3 * sizeof(float));
 
     i = 0;
     j = 0;
@@ -101,19 +101,19 @@ int** submatrix3(float **matrix, int row, int column)
     return (result);
 }
 
-int minor3(float **matrix, int row, int column)
+float minor3(float **matrix, int row, int column)
 {
     //int submatrix[2][2] = submatrix3(matrix, row, column);
-    int minor = det2x2(submatrix3(matrix, row, column));
+    float minor = det2x2(submatrix3(matrix, row, column));
     //printf("minor: %d\n", minor);
     return (0);
 }
 
-int cofactor3(float **matrix, int row, int column)
+float cofactor3(float **matrix, int row, int column)
 {
     //int submatrix[2][2] = submatrix3(matrix, row, column);
-    int minor;
-    int cofactor;
+    float minor;
+    float cofactor;
 
     minor = det2x2(submatrix3(matrix, row, column));
     cofactor = 0;
@@ -121,15 +121,15 @@ int cofactor3(float **matrix, int row, int column)
         cofactor = minor;
     else
         cofactor = -1 * minor;
-    printf("cofactor: %d\n", cofactor);
+    //printf("cofactor: %d\n", cofactor);
     return (cofactor);
 }
 
-int cofactor4(float **matrix, int row, int column)
+float cofactor4(float **matrix, int row, int column)
 {
     //int submatrix[2][2] = submatrix3(matrix, row, column);
-    int minor;
-    int cofactor;
+    float minor;
+    float cofactor;
 
     minor = determinant3(submatrix4(matrix, row, column));
     cofactor = 0;
@@ -152,7 +152,6 @@ float **inverse(float **matrix)
         result[i] = (float *)malloc(4 * sizeof(float));    
 
     det = determinant(matrix);
-    //printf("det4: %f\n", det);
     row = 0;
     col = 0;
     c = 0;
@@ -163,8 +162,8 @@ float **inverse(float **matrix)
         while (col < 4)
         {
             c = cofactor4(matrix, row, col);
-            //printf("c: %d\ndet: %d\n", c, det);
-            result[col][row] = (float)c / det;
+            //printf("c: %f\ndet: %f\n", c, det);
+            result[col][row] = (float)c / (float)det;
             col++;
         }
         col = 0;

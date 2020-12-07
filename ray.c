@@ -61,21 +61,18 @@ t_intersection* intersect(t_sphere s, t_ray ray)
     float b;
     float delta;
     
-
     t_ray ray2 = transform(ray, inverse(s.transform));
-    //displayInv(s.transform);
     sphere_to_ray = substract_tuples(ray2.origin, point(0, 0, 0));
     a = scalar_product(ray2.direction, ray2.direction);
     b = 2 * scalar_product(ray2.direction, sphere_to_ray);
     result = (t_intersection*)malloc(2 * sizeof(t_intersection));
     delta = cal_delta(&ray2, &s);
     if (delta < 0)
-    {   
-        //printf("No intersection");
         return (NULL);
-    }
-    result[0] = intersection((-b - sqrt(delta)) / (2 * a), 1);
-    result[1] = intersection((-b + sqrt(delta)) / (2 * a), 1);
+    result[0] = intersection((-b - sqrt(delta)) / (2 * a), s.id);
+    result[1] = intersection((-b + sqrt(delta)) / (2 * a), s.id);
+    result[0] = result[0].t < result[1].t ? result[0] : result[1];
+    result[1] = result[0].t > result[1].t ? result[0] : result[1];
     return (result);
 }
 

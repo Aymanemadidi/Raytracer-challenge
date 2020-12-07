@@ -89,6 +89,7 @@ typedef struct s_world
 {   
     t_light light;
     t_sphere *arr;
+    t_sphere s3;
 } t_world;
 
 
@@ -132,6 +133,7 @@ int	ft_strlen(const char *str);
 tuple vector(float x, float y, float z);
 tuple point(float x, float y, float z);
 int is_equal(float x, float y);
+int a_less_b(float a, float b);
 float ft_abs(float x);
 tuple add_tuples(tuple t1, tuple t2);
 tuple substract_tuples(tuple t1, tuple t2);
@@ -161,17 +163,18 @@ void display3(int **result);
 void display2(int **result);
 void displayInv(float **result);
 void display(int **result);
-int** submatrix4(float **matrix, int row, int column);
+float** init_matrix(float arr[16]);
+float** submatrix4(float **matrix, int row, int column);
 int** submatrix3(float **matrix, int row, int column);
-int minor3(float **matrix, int row, int column);
-int cofactor3(float** matrix, int row, int column);
+float minor3(float **matrix, int row, int column);
+float cofactor3(float** matrix, int row, int column);
 float determinant(float **m);
-int determinant3(int **m);
+float determinant3(float **m);
 float** transpose_matrix(float **buff);
 float **inverse(float **matrix);
-int cofactor4(float **matrix, int row, int column);
-float **translation(int x, int y, int z);
-float **scaling(int x, int y, int z);
+float cofactor4(float **matrix, int row, int column);
+float **translation(float x, float y, float z);
+float **scaling(float x, float y, float z);
 float **rotation_x(double r);
 float **rotation_y(double r);
 float **rotation_z(double r);
