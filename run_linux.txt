@@ -1,0 +1,4 @@
+gcc tuple_oper1.c tuple_oper.c canva.c color.c mat_mult.c ppm.c ray.c reflection.c shading.c transformations.c utils.c vec_point.c world.c matrix2.c length_num.c -lm
+./a.out
+
+xdg-open test.ppm

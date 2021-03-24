@@ -85,7 +85,7 @@ t_intersection** intersect_world(t_world *w, t_ray ray)
     return (result);
 }
 
-int main()
+/*int main()
 {
     t_world w;
     t_ray r;
@@ -102,4 +102,4 @@ int main()
     //printf("color: %f\n", w.arr[0].m.color.blue);
     return (0);
     
-}
+}*/

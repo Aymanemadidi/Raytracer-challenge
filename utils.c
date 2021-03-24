@@ -1,6 +1,6 @@
 #include "header.h"
 
-int		ft_strlen(const char *str)
+/*int		ft_strlen(const char *str)
 {
 	int		i;
 
@@ -8,7 +8,7 @@ int		ft_strlen(const char *str)
 	while (str[i])
 		i++;
 	return (i);
-}
+}*/
 
 float ft_abs(float x)
 {
